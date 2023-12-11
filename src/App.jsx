@@ -1,20 +1,34 @@
-import { useState } from "react";
+import { Component } from "react";
 import "./App.css";
 
-function App() {
-  const [count, setcount] = useState(0);
+export default class App extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="container">
-      <h1>Counter App</h1>
-      <h2 className="count">{count}</h2>
-      <div className="buttons">
-        <button onClick={() => setcount(count + 1)}>+</button>
-        <button onClick={() => setcount(count - 1)}>-</button>
-        <button onClick={() => setcount(0)}>Reset</button>
+    this.state = {
+      count: 0,
+    };
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <h1>Counter App</h1>
+        <h2 className="count">{this.state.count}</h2>
+        <div className="buttons">
+          <button
+            onClick={() => this.setState({ count: this.state.count + 1 })}
+          >
+            +
+          </button>
+          <button
+            onClick={() => this.setState({ count: this.state.count - 1 })}
+          >
+            -
+          </button>
+          <button onClick={() => this.setState({ count: 0 })}>Reset</button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
-
-export default App;
